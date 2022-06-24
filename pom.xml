@@ -13,6 +13,7 @@
         <module>provider-video-6001</module>
         <module>provider-favourite-5001</module>
         <module>provider-comment-4001</module>
+        <module>Zuul-3001</module>
     </modules>
 
     <parent>

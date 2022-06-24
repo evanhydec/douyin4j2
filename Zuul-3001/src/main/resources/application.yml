@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: zuul-gateway
+
+server:
+  port: 3001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+
+zuul:
+  routes:
+    provider-user: /user/**
+    video-provider:
+      path: /publish/**,/feed/**,/video/
+      url: http://192.168.2.104:6001/
+    follow-provider:
+      path: /relation/**
+      url: http://192.168.2.104:9001/
+    favourite-provider:
+      path: /favorite/**
+      url: http://192.168.2.104:5001/
+    comment-provider:
+      path: /comment/**
+      url: http://192.168.2.104:4001/
+  prefix: /douyin

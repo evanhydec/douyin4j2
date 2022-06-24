@@ -10,6 +10,7 @@
         <module name="provider-video-6001" />
         <module name="provider-favourite-5001" />
         <module name="Eureka-7002" />
+        <module name="Zuul-3001" />
         <module name="Eureka-7001" />
         <module name="provider-user-8001" />
         <module name="provider-comment-4001" />
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Eureka-7001" options="-parameters" />
       <module name="Eureka-7002" options="-parameters" />
+      <module name="Zuul-3001" options="-parameters" />
       <module name="commons" options="-parameters" />
       <module name="douyin4j2" options="-parameters" />
       <module name="provider-comment-4001" options="-parameters" />
