@@ -17,6 +17,12 @@ spring:
       url: jdbc:mysql://192.168.2.105:3306/douyin4j?serverTimezone=Asia/Shanghai
       username: root
       password: 123123
+  servlet:
+    multipart:
+      max-file-size: 104857600  #100Mb
+      max-request-size: 104857600 #100Mb
+  mvc:
+    static-path-pattern: /static/**
 
 eureka:
   client:
