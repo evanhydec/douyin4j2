@@ -10,7 +10,7 @@
 
     <insert id="createVideo">
         INSERT INTO
-            <include refid="BASE_TABLE"></include>
+        <include refid="BASE_TABLE"></include>
         <trim prefix="(" suffix=")">
             userId,title,playUrl,coverUrl,createdAt
         </trim>
@@ -21,7 +21,7 @@
 
     <update id="updateVideo" parameterType="com.example.DTO.videoDto">
         UPDATE
-            <include refid="BASE_TABLE"></include>
+        <include refid="BASE_TABLE"></include>
         <set>
             <if test="video.favorite_count != null and video.favorite_count != 0">
                 favoriteCount = favoriteCount + #{video.favorite_count}
@@ -31,44 +31,56 @@
             </if>
         </set>
         WHERE
-            id = #{video.id}
+        id = #{video.id}
     </update>
 
 
-    <resultMap id="video" type="com.example.DTO.videoDto">
+    <resultMap id="videoDto" type="com.example.DTO.videoDto">
         <id property="id" column="id"/>
         <result property="play_url" column="playUrl"/>
         <result property="cover_url" column="coverUrl"/>
         <result property="favorite_count" column="favoriteCount"/>
         <result property="comment_count" column="commentCount"/>
         <result property="title" column="title"/>
-        <association property="author" select="com.example.dao.userDao.getUserDtoById" column="userId"/>
     </resultMap>
 
-    <select id="getVideosByUid" resultMap="video">
-        SELECT *
+    <select id="getVideosByUid" resultMap="videoDto">
+        SELECT
+        *
         FROM
-            <include refid="BASE_TABLE"></include>
+        <include refid="BASE_TABLE"/>
         WHERE
-            userId = #{id}
+        userId = #{id}
     </select>
 
+    <resultMap id="video" type="com.example.POJO.video">
+        <id property="id" column="id"/>
+        <result property="user_id" column="userId"/>
+        <result property="play_url" column="playUrl"/>
+        <result property="cover_url" column="coverUrl"/>
+        <result property="favorite_count" column="favoriteCount"/>
+        <result property="comment_count" column="commentCount"/>
+        <result property="title" column="title"/>
+    </resultMap>
+
     <select id="getVideosByTime" resultMap="video">
-        SELECT *
+        SELECT
+        *
         FROM
-        <include refid="BASE_TABLE"></include>
+        <include refid="BASE_TABLE"/>
         WHERE
-            createdAt &lt; #{time}
+        createdAt &lt; #{time}
         ORDER BY createdAt desc
         limit 30
     </select>
 
     <select id="getVideosByIds" resultMap="video">
-        SELECT *
+        SELECT
+        *
         FROM
-            <include refid="BASE_TABLE"></include>
+        <include refid="BASE_TABLE"/>
         WHERE
-            id
+        id
         IN
         <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
             #{item}

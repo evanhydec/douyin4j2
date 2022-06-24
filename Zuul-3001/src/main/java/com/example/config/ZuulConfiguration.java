@@ -40,7 +40,6 @@ public class ZuulConfiguration {
     public ZuulPostProcessor zuulPostProcessor(@Autowired RouteLocator routeLocator,
                                                @Autowired ZuulController zuulController,
                                                @Autowired(required = false) ErrorController errorController) {
-        System.out.println("ZuulPostProcessor....");
         return new ZuulPostProcessor(routeLocator, zuulController, errorController);
     }
 

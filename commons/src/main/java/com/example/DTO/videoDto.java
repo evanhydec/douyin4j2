@@ -1,5 +1,7 @@
 package com.example.DTO;
 
+import com.example.POJO.video;
+
 public class videoDto {
     private Integer id;
     private userDto author;
@@ -11,6 +13,15 @@ public class videoDto {
     private String title;
 
     public videoDto() {
+    }
+
+    public videoDto(video video) {
+        this.id = video.getId();
+        this.play_url = video.getPlay_url();
+        this.cover_url = video.getCover_url();
+        this.favorite_count = video.getFavorite_count();
+        this.comment_count = video.getComment_count();
+        this.title = video.getTitle();
     }
 
     public videoDto(Integer id, Integer favorite_count, Integer comment_count) {

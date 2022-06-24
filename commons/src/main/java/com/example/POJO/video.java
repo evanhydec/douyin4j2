@@ -1,30 +1,24 @@
 package com.example.POJO;
 
-import com.example.DTO.userDto;
-
 public class video {
     private Integer id;
-    private userDto user;
+    private Integer user_id;
     private String play_url;
     private String cover_url;
     private Integer favorite_count;
     private Integer comment_count;
-    private boolean is_favorite;
     private String title;
-    private Integer createdAt;
 
     @Override
     public String toString() {
         return "video{" +
                 "id=" + id +
-                ", user=" + user +
+                ", user_id=" + user_id +
                 ", play_url='" + play_url + '\'' +
                 ", cover_url='" + cover_url + '\'' +
                 ", favorite_count=" + favorite_count +
                 ", comment_count=" + comment_count +
-                ", is_favorite=" + is_favorite +
                 ", title='" + title + '\'' +
-                ", createdAt=" + createdAt +
                 '}';
     }
 
@@ -36,12 +30,12 @@ public class video {
         this.id = id;
     }
 
-    public userDto getUser() {
-        return user;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUser(userDto user) {
-        this.user = user;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getPlay_url() {
@@ -76,14 +70,6 @@ public class video {
         this.comment_count = comment_count;
     }
 
-    public boolean isIs_favorite() {
-        return is_favorite;
-    }
-
-    public void setIs_favorite(boolean is_favorite) {
-        this.is_favorite = is_favorite;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -92,26 +78,16 @@ public class video {
         this.title = title;
     }
 
-    public Integer getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Integer createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public video() {
     }
 
-    public video(Integer id, userDto user, String play_url, String cover_url, Integer favorite_count, Integer comment_count, boolean is_favorite, String title, Integer createdAt) {
+    public video(Integer id, Integer user_id, String play_url, String cover_url, Integer favorite_count, Integer comment_count, String title) {
         this.id = id;
-        this.user = user;
+        this.user_id = user_id;
         this.play_url = play_url;
         this.cover_url = cover_url;
         this.favorite_count = favorite_count;
         this.comment_count = comment_count;
-        this.is_favorite = is_favorite;
         this.title = title;
-        this.createdAt = createdAt;
     }
 }

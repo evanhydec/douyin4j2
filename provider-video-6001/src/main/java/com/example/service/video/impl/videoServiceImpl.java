@@ -3,9 +3,12 @@ package com.example.service.video.impl;
 import com.example.DTO.Cond.favouriteCond;
 import com.example.DTO.Cond.followCond;
 import com.example.DTO.Cond.videoCond;
+import com.example.DTO.userDto;
 import com.example.DTO.videoDto;
+import com.example.POJO.video;
 import com.example.service.favourite.favouriteService;
 import com.example.service.follow.followService;
+import com.example.service.user.userService;
 import com.example.service.video.videoService;
 import com.example.utils.cover;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,6 +39,9 @@ public class videoServiceImpl implements videoService {
 
     @Autowired
     private favouriteService favouriteService;
+
+    @Autowired
+    private userService userService;
 
     public videoServiceImpl() {
         try {
@@ -83,32 +90,47 @@ public class videoServiceImpl implements videoService {
     @Override
     public List<videoDto> list(Integer uid, Integer token) {
         List<videoDto> videos = videoDao.getVideosByUid(uid);
+        userDto author = userService.getUser(uid);
         String check = followService.checkFollow(new followCond(token, uid));
         if (check.equals("yes")) {
-            for (videoDto video : videos) {
-                video.getAuthor().setIs_follow(true);
-            }
+            author.setIs_follow(true);
+        }
+        for (videoDto video : videos) {
+            video.setAuthor(author);
         }
         return videos;
     }
 
     @Override
     public List<videoDto> feed(Long time, Integer uid) {
-        List<videoDto> videos = videoDao.getVideosByTime(time);
-        for (videoDto video : videos) {
-            if (followService.checkFollow(new followCond(uid, video.getAuthor().getId())).equals("yes")) {
-                video.getAuthor().setIs_follow(true);
+        List<video> videos = videoDao.getVideosByTime(time);
+        List<videoDto> res = new ArrayList<>();
+        for (video video : videos) {
+            videoDto temp = new videoDto(video);
+            userDto author = userService.getUser(video.getUser_id());
+            if (followService.checkFollow(new followCond(uid, video.getUser_id())).equals("yes")) {
+                author.setIs_follow(true);
             }
+            temp.setAuthor(author);
             if (favouriteService.checkFavourite(new favouriteCond(uid, video.getId())).equals("yes")) {
-                video.setIs_favorite(true);
+                temp.setIs_favorite(true);
             }
+            res.add(temp);
         }
-        return videos;
+        return res;
     }
 
     @Override
     public List<videoDto> getAll(List<Integer> ids) {
-        return videoDao.getVideosByIds(ids);
+        List<video> videos = videoDao.getVideosByIds(ids);
+        ArrayList<videoDto> res = new ArrayList<>();
+        for (video video : videos) {
+            videoDto temp = new videoDto(video);
+            userDto author = userService.getUser(video.getUser_id());
+            temp.setAuthor(author);
+            res.add(temp);
+        }
+        return res;
     }
 
     @Override

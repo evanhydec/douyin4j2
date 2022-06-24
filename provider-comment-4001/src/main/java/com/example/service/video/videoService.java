@@ -11,11 +11,6 @@ import java.util.List;
 @Component
 @FeignClient("provider-video")
 public interface videoService {
-
-    @RequestMapping(value = "/douyin/video/list",method = RequestMethod.POST)
-    List<videoDto> getVideosByIds(List<Integer> ids);
-
-
-    @RequestMapping(value = "/douyin/video/update",method = RequestMethod.POST)
+    @RequestMapping(value = "/douyin/video/update", method = RequestMethod.POST)
     void updateVideo(videoDto videoDto);
 }
