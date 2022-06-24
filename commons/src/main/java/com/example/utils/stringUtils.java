@@ -6,7 +6,7 @@ public class stringUtils {
     private static SimpleDateFormat formatter = new SimpleDateFormat("MM-dd");
 
     public static Integer parse(String token) {
-        if ("0".equals(token) || "".equals(token)) {
+        if (token == null || "0".equals(token) || "".equals(token)) {
             return 0;
         } else {
             boolean verify = jwt.verify(token);

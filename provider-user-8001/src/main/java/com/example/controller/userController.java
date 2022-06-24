@@ -99,4 +99,13 @@ public class userController {
     ) {
         return service.update(user);
     }
+
+
+    @PostMapping("/get")
+    public userDto get(
+            @RequestBody
+            Integer id
+    ) {
+        return service.getUser(id,null);
+    }
 }

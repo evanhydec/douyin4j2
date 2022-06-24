@@ -12,6 +12,7 @@
         <module name="Eureka-7002" />
         <module name="Eureka-7001" />
         <module name="provider-user-8001" />
+        <module name="provider-comment-4001" />
         <module name="provider-follow-9001" />
         <module name="commons" />
       </profile>
@@ -23,6 +24,7 @@
       <module name="Eureka-7002" options="-parameters" />
       <module name="commons" options="-parameters" />
       <module name="douyin4j2" options="-parameters" />
+      <module name="provider-comment-4001" options="-parameters" />
       <module name="provider-favourite-5001" options="-parameters" />
       <module name="provider-follow-9001" options="-parameters" />
       <module name="provider-user-8001" options="-parameters" />
