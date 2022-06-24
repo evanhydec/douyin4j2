@@ -19,7 +19,7 @@
         </trim>
     </insert>
 
-    <update id="updateVideo" parameterType="com.example.douyin.DTO.videoDto">
+    <update id="updateVideo" parameterType="com.example.DTO.videoDto">
         UPDATE
             <include refid="BASE_TABLE"></include>
         <set>
@@ -35,7 +35,7 @@
     </update>
 
 
-    <resultMap id="video" type="com.example.douyin.DTO.videoDto">
+    <resultMap id="video" type="com.example.DTO.videoDto">
         <id property="id" column="id"/>
         <result property="play_url" column="playUrl"/>
         <result property="cover_url" column="coverUrl"/>
