@@ -6,6 +6,7 @@ import com.example.DTO.Cond.videoCond;
 import com.example.DTO.userDto;
 import com.example.DTO.videoDto;
 import com.example.POJO.video;
+import com.example.dao.videoDao;
 import com.example.service.favourite.favouriteService;
 import com.example.service.follow.followService;
 import com.example.service.user.userService;
@@ -32,7 +33,7 @@ public class videoServiceImpl implements videoService {
     private final String saveCUrl;
 
     @Autowired
-    private com.example.dao.videoDao videoDao;
+    private videoDao videoDao;
 
     @Autowired
     private followService followService;
@@ -96,6 +97,9 @@ public class videoServiceImpl implements videoService {
             author.setIs_follow(true);
         }
         for (videoDto video : videos) {
+            if (favouriteService.checkFavourite(new favouriteCond(token, video.getId())).equals("yes")) {
+                video.setIs_favorite(true);
+            }
             video.setAuthor(author);
         }
         return videos;
