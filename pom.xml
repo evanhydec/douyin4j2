@@ -7,6 +7,10 @@
     <modules>
         <module>Eureka-7001</module>
         <module>Eureka-7002</module>
+        <module>provider-user-8001</module>
+        <module>provider-follow-9001</module>
+        <module>commons</module>
+        <module>provider-video-6001</module>
     </modules>
 
     <parent>
@@ -53,8 +57,8 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>1.2.8</version>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.2.9</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
