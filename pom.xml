@@ -11,6 +11,7 @@
         <module>provider-follow-9001</module>
         <module>commons</module>
         <module>provider-video-6001</module>
+        <module>provider-favourite-5001</module>
     </modules>
 
     <parent>
