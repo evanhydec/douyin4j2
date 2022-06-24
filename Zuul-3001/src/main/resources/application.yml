@@ -12,17 +12,21 @@ eureka:
 
 zuul:
   routes:
-    provider-user: /user/**
-    video-provider:
-      path: /publish/**,/feed/**,/video/
-      url: http://192.168.2.104:6001/
-    follow-provider:
-      path: /relation/**
-      url: http://192.168.2.104:9001/
-    favourite-provider:
-      path: /favorite/**
-      url: http://192.168.2.104:5001/
-    comment-provider:
-      path: /comment/**
-      url: http://192.168.2.104:4001/
-  prefix: /douyin
+    user:
+      path: /user/**
+      url: http://192.168.2.104:8001
+      strip-prefix: false
+#  routes:
+#    provider-user: /user/**
+#    video-provider:
+#      path: /publish/**,/feed/**,/video/
+#      url: http://192.168.2.104:6001/
+#    follow-provider:
+#      path: /relation/**
+#      url: http://192.168.2.104:9001/
+#    favourite-provider:
+#      path: /favorite/**
+#      url: http://192.168.2.104:5001/
+#    comment-provider:
+#      path: /comment/**
+#      url: http://192.168.2.104:4001/
