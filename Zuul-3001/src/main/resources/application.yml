@@ -1,6 +1,10 @@
 spring:
   application:
     name: zuul-gateway
+  servlet:
+    multipart:
+      max-file-size: 104857600      #100Mb
+      max-request-size: 104857600   #100Mb
 
 server:
   port: 3001
@@ -13,20 +17,30 @@ eureka:
 zuul:
   routes:
     user:
-      path: /user/**
-      url: http://192.168.2.104:8001
+      path: /douyin/user/**
+      url: http://192.168.2.104:8001/
       strip-prefix: false
-#  routes:
-#    provider-user: /user/**
-#    video-provider:
-#      path: /publish/**,/feed/**,/video/
-#      url: http://192.168.2.104:6001/
-#    follow-provider:
-#      path: /relation/**
-#      url: http://192.168.2.104:9001/
-#    favourite-provider:
-#      path: /favorite/**
-#      url: http://192.168.2.104:5001/
-#    comment-provider:
-#      path: /comment/**
-#      url: http://192.168.2.104:4001/
+    follow:
+      path: /douyin/relation/**
+      url: http://192.168.2.104:9001/
+      strip-prefix: false
+    favorite:
+      path: /douyin/favorite/**
+      url: http://192.168.2.104:5001/
+      strip-prefix: false
+    comment:
+      path: /douyin/comment/**
+      url: http://192.168.2.104:4001/
+      strip-prefix: false
+    video:
+      path: /douyin/publish/**
+      url: http://192.168.2.104:6001/
+      strip-prefix: false
+    videoFeed:
+      path: /douyin/feed/**
+      url: http://192.168.2.104:6001/
+      strip-prefix: false
+    videoPlay:
+      path: /douyin/static/**
+      url: http://192.168.2.104:6001/
+      strip-prefix: false

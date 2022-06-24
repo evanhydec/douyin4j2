@@ -21,16 +21,16 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Eureka-7001" options="-parameters" />
-      <module name="Eureka-7002" options="-parameters" />
-      <module name="Zuul-3001" options="-parameters" />
-      <module name="commons" options="-parameters" />
+      <module name="Eureka-7001" options="" />
+      <module name="Eureka-7002" options="" />
+      <module name="Zuul-3001" options="" />
+      <module name="commons" options="" />
       <module name="douyin4j2" options="-parameters" />
-      <module name="provider-comment-4001" options="-parameters" />
-      <module name="provider-favourite-5001" options="-parameters" />
-      <module name="provider-follow-9001" options="-parameters" />
-      <module name="provider-user-8001" options="-parameters" />
-      <module name="provider-video-6001" options="-parameters" />
+      <module name="provider-comment-4001" options="" />
+      <module name="provider-favourite-5001" options="" />
+      <module name="provider-follow-9001" options="" />
+      <module name="provider-user-8001" options="" />
+      <module name="provider-video-6001" options="" />
     </option>
   </component>
 </project>
