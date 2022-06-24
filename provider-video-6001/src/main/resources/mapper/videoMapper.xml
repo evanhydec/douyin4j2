@@ -42,7 +42,7 @@
         <result property="favorite_count" column="favoriteCount"/>
         <result property="comment_count" column="commentCount"/>
         <result property="title" column="title"/>
-        <association property="author" select="com.example.douyin.DAO.userDao.getUserDtoById" column="userId"/>
+        <association property="author" select="com.example.dao.userDao.getUserDtoById" column="userId"/>
     </resultMap>
 
     <select id="getVideosByUid" resultMap="video">
