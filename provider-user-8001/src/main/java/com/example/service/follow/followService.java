@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Component
-@FeignClient(value = "provider-follow")
+@FeignClient(name = "provider-follow")
 public interface followService {
     @RequestMapping(value = "/douyin/relation/check", method = RequestMethod.POST)
     String checkFollow(followCond cond);
