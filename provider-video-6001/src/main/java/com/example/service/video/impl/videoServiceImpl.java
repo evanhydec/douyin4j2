@@ -64,7 +64,6 @@ public class videoServiceImpl implements videoService {
         String name = file.getOriginalFilename();
         String suffix = name.substring(name.lastIndexOf("."));
         name = UUID.randomUUID() + suffix;
-        System.out.println("使用的方法为 " + method);
         try {
             //by local
             File target = new File(saveVUrl, name);
