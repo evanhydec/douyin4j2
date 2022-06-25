@@ -13,6 +13,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableEurekaClient
 @EnableFeignClients(basePackages = "com.example.service")
+@EnableHystrix
 public class userProvider_8001 {
     public static void main(String[] args) {
         SpringApplication.run(userProvider_8001.class,args);

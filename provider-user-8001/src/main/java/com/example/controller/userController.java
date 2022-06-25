@@ -86,6 +86,7 @@ public class userController {
     }
 
     @PostMapping("/getAll")
+    @HystrixCommand(fallbackMethod = "hystrixGetAll")
     public List<userDto> getAll(
             @RequestBody
             List<Integer> ids
@@ -93,7 +94,12 @@ public class userController {
         return service.getUsers(ids);
     }
 
+    public List<userDto> hystrixGetAll(List<Integer> ids) {
+        return null;
+    }
+
     @PostMapping("/update")
+    @HystrixCommand(fallbackMethod = "hystrixUpdate")
     public boolean update(
             @RequestBody
             userDto user
@@ -101,12 +107,23 @@ public class userController {
         return service.update(user);
     }
 
+    public boolean hystrixUpdate(
+            userDto user
+    ) {
+        return false;
+    }
 
     @PostMapping("/get")
+    @HystrixCommand(fallbackMethod = "hystrixGet")
     public userDto get(
             @RequestBody
             Integer id
     ) {
         return service.getUser(id,null);
     }
+
+    public userDto hystrixGet(Integer id) {
+        return null;
+    }
+
 }

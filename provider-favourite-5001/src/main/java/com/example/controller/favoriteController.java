@@ -8,6 +8,7 @@ import com.example.DTO.Response.videoResponse;
 import com.example.DTO.videoDto;
 import com.example.service.favorite.favoriteService;
 import com.example.utils.stringUtils;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -65,6 +66,7 @@ public class favoriteController {
     }
 
     @PostMapping("/check")
+    @HystrixCommand(fallbackMethod = "hystrixCheck")
     public String check(
             @RequestBody
             favouriteCond cond
@@ -74,5 +76,9 @@ public class favoriteController {
         }  else {
             return "no";
         }
+    }
+
+    public String hystrixCheck(favouriteCond cond) {
+        return "服务异常，熔断";
     }
 }
