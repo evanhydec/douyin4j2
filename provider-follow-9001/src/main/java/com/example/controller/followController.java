@@ -78,10 +78,6 @@ public class followController {
             @RequestBody
             followCond followCond
             ) {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-        }
         if (service.checkFollow(followCond)) {
             return "yes";
         }  else {
@@ -90,7 +86,6 @@ public class followController {
     }
 
     public String hystrixCheck(followCond followCond) {
-        System.out.println("服务异常，已熔断");
         return "no";
     }
 

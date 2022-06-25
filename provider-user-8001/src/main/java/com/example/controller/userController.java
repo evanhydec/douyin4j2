@@ -90,11 +90,6 @@ public class userController {
             @RequestBody
             List<Integer> ids
     ) {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         return service.getUsers(ids);
     }
 
