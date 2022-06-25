@@ -1,9 +1,0 @@
-server:
-  port: 7002
-
-eureka:
-  client:
-    register-with-eureka: false #不注册自己
-    fetch-registry: false   #不获取注册信息
-    service-url:
-      defaultZone: http://eureka7001.com:7001/eureka

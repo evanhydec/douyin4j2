@@ -11,4 +11,4 @@ spring:
           uri: https://gitee.com/juityvan/douyin4j-config.git
           username: juityvan
           password: Aa13205763766
-      label: main
+      label: master

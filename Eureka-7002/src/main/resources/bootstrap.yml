@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      name: config2-eureka
+      uri: http://localhost:6060
+      profile: dev
