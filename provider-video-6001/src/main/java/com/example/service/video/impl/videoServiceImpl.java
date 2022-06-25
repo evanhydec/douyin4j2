@@ -27,10 +27,7 @@ import java.util.UUID;
 
 @Service
 public class videoServiceImpl implements videoService {
-    @Value("${video.url}")
-    private String local;
-    @Value("${video.url}")
-    private String method;
+    private final String local;
     private final String realPath;
     private final String playUrl;
     private final String coverUrl;
@@ -52,8 +49,7 @@ public class videoServiceImpl implements videoService {
     public videoServiceImpl() {
         try {
             realPath = ResourceUtils.getURL("classpath:").getPath() + "static/";
-//            local = "http://192.168.2.106:3001/douyin/static/";
-            System.out.println("存储地址为：" + local);
+            local = "http://192.168.2.106:3001/douyin/static/";
             saveVUrl = realPath + "videos";
             saveCUrl = realPath + "covers";
             playUrl = local + "videos/";
