@@ -13,6 +13,7 @@
         <module name="Eureka-7002" />
         <module name="Zuul-3001" />
         <module name="Eureka-7001" />
+        <module name="dashboard-5050" />
         <module name="provider-user-8001" />
         <module name="provider-comment-4001" />
         <module name="provider-follow-9001" />

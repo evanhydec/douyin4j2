@@ -15,6 +15,7 @@
         <module>provider-comment-4001</module>
         <module>Zuul-3001</module>
         <module>config-server-6060</module>
+        <module>dashboard-5050</module>
     </modules>
 
     <groupId>com.example</groupId>
