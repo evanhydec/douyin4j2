@@ -2,5 +2,5 @@ spring:
   cloud:
     config:
       name: config1-follow
-      uri: http://localhost:6060
+      uri: http://configServer.com:6060
       profile: dev
