@@ -12,7 +12,9 @@ import com.example.service.follow.followService;
 import com.example.service.user.userService;
 import com.example.service.video.videoService;
 import com.example.utils.cover;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +27,10 @@ import java.util.UUID;
 
 @Service
 public class videoServiceImpl implements videoService {
-    private final String local;
+    @Value("${video.url}")
+    private String local;
+    @Value("${video.url}")
+    private String method;
     private final String realPath;
     private final String playUrl;
     private final String coverUrl;
@@ -47,7 +52,8 @@ public class videoServiceImpl implements videoService {
     public videoServiceImpl() {
         try {
             realPath = ResourceUtils.getURL("classpath:").getPath() + "static/";
-            local = "http://192.168.2.106:3001/douyin/static/";
+//            local = "http://192.168.2.106:3001/douyin/static/";
+            System.out.println("存储地址为：" + local);
             saveVUrl = realPath + "videos";
             saveCUrl = realPath + "covers";
             playUrl = local + "videos/";
@@ -62,7 +68,7 @@ public class videoServiceImpl implements videoService {
         String name = file.getOriginalFilename();
         String suffix = name.substring(name.lastIndexOf("."));
         name = UUID.randomUUID() + suffix;
-
+        System.out.println("使用的方法为 " + method);
         try {
             //by local
             File target = new File(saveVUrl, name);
