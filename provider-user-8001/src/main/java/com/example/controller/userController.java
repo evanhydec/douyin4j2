@@ -7,6 +7,7 @@ import com.example.DTO.userDto;
 import com.example.service.user.userService;
 import com.example.utils.jwt;
 import com.example.utils.stringUtils;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,6 +90,11 @@ public class userController {
             @RequestBody
             List<Integer> ids
     ) {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return service.getUsers(ids);
     }
 

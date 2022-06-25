@@ -6,6 +6,7 @@ import com.example.DTO.Response.usersResponse;
 import com.example.DTO.userDto;
 import com.example.service.follow.followService;
 import com.example.utils.stringUtils;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -72,15 +73,25 @@ public class followController {
     }
 
     @PostMapping("/check")
+    @HystrixCommand(fallbackMethod = "hystrixCheck")
     public String check(
             @RequestBody
             followCond followCond
             ) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+        }
         if (service.checkFollow(followCond)) {
             return "yes";
         }  else {
             return "no";
         }
+    }
+
+    public String hystrixCheck(followCond followCond) {
+        System.out.println("服务异常，已熔断");
+        return "no";
     }
 
 }
