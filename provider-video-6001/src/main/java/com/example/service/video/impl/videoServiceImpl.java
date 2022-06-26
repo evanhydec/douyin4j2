@@ -49,7 +49,7 @@ public class videoServiceImpl implements videoService {
     public videoServiceImpl() {
         try {
             realPath = ResourceUtils.getURL("classpath:").getPath() + "static/";
-            local = "http://192.168.2.106:3001/douyin/static/";
+            local = "http://192.168.2.108:3001/douyin/static/";
             saveVUrl = realPath + "videos";
             saveCUrl = realPath + "covers";
             playUrl = local + "videos/";
